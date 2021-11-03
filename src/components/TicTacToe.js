@@ -325,7 +325,7 @@ export class TicTacToe extends Component {
     let circleOrCrossArr = [...this.state.circleOrCross]
     index += 1;
 
-    if(winCompleteArr.length - 1 > index){
+    if(winCompleteArr.length - 1 < index){
         winCompleteArr.push(winComplete)
     }else{
         winCompleteArr[index] = winComplete;
