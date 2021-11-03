@@ -5,7 +5,6 @@ export class Utility extends Component {
     return (
       <div className="util">
         <button
-          href="#id"
           className="btn"
           onClick={() => this.props.handlePrev()}
           rel="noopener noreferrer"
@@ -13,7 +12,6 @@ export class Utility extends Component {
           <i className="fas fa-arrow-alt-circle-left"></i>
         </button>
         <button
-          href="#id"
           onClick={() => this.props.handleReset()}
           className="btn"
           rel="noopener noreferrer"
@@ -21,7 +19,6 @@ export class Utility extends Component {
           <i className="fas fa-redo"></i>
         </button>
         <button
-          href="#id"
           onClick={() => this.props.prevClicked ? this.props.handleNext() : ""}
           className="btn"
           rel="noopener noreferrer"
