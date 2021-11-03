@@ -3,6 +3,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: 'Courier New', Courier, monospace;
+  user-select: none;
 }
 
 .wrapper {
@@ -57,7 +58,16 @@ h1 {
 }
 
 .btn{
+  border-radius: 50%;
+  cursor: pointer;
+  width: 80px;
+  border: none;
+  height: 80px;
+  background-color: rgba(0, 0, 0, 0);
+}
+i {
   font-size: calc(18px + 3vw);
+  color: #0d295c;
 }
 
 .one, .two, .three{
