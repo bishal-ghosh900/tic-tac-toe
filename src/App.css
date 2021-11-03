@@ -2,18 +2,24 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Poppins', sans-serif;
   user-select: none;
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
 }
 
 .wrapper {
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  /* background-image: linear-gradient(to bottom right, #00e8f0, #fffb01); */
+  background-image: linear-gradient(to bottom right, #00e8f0, #f005e4);
   background-color: #fae3f6;
   
 }
@@ -25,7 +31,7 @@ h1 {
 
 .tictactoe{
   width: calc(300px + 3vw);
-  box-shadow: 0px 0px 6px 5px #ff00d4;
+  /* box-shadow: 0px 4px 10px 10px #ff00d4; */
   background-color: #ffffff;
   border-radius: 10%;
   padding: 40px;
@@ -42,21 +48,21 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: calc(40px + 2vw);
+  font-size: calc(30px + 2vw);
 }
 
 .players {
   width: 100%;
   font-size: calc(15px + 2vw);
   font-weight: 900;
-  color: #5f5a16;
+  color: #ffffff;
   display: flex;
   justify-content: space-around;
 }
 
 .util{
   width: calc(300px + 3.5vw);
-  margin: 1rem;
+  margin: 0.3rem;
   padding: 10px;
   display: flex;
   justify-content: space-around;
