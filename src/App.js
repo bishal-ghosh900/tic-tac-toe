@@ -1,9 +1,12 @@
 import './App.css';
+import { BrowserRouter } from 'react-router-dom';
 import WrapperTicTacToe from './components/WrapperTicTacToe';
 
 function App() {
   return (
-    <WrapperTicTacToe />
+    <BrowserRouter>
+      <WrapperTicTacToe />
+    </BrowserRouter>
   );
 }
 

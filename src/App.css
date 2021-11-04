@@ -14,7 +14,7 @@ html, body {
 
 .wrapper {
   width: 100vw;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -55,6 +55,7 @@ h1 {
   width: 100%;
   font-size: calc(15px + 2vw);
   font-weight: 900;
+  margin: 2rem;
   color: #ffffff;
   display: flex;
   justify-content: space-around;
@@ -76,6 +77,31 @@ h1 {
   height: 80px;
   background-color: rgba(0, 0, 0, 0);
 }
+
+.start-button:link, .start-button:visited, .start-button:active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 200px;
+  height: 100px;
+  border-radius: 40px;
+  font-size: 3rem;
+  background-color: #ffffff;
+  padding: 20px 50px;
+  text-decoration: none;
+  color: #0d295c;
+  font-weight: 900;
+}
+
+.btn-wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+  width: 100%;
+}
+
 i {
   font-size: calc(18px + 3vw);
   color: #0d295c;

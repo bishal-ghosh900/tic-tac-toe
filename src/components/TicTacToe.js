@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Utility from "./Utility";
+import TicTacToeMain from "./TicTacToeMain";
+
 
 export class TicTacToe extends Component {
   constructor(props) {
@@ -85,52 +86,48 @@ export class TicTacToe extends Component {
   handleReset = () => {
     const upperBoxState = [...this.state.boxState];
 
-    for(let i = upperBoxState.length - 1; i >= 1; i--){
-        upperBoxState.pop();
+    for (let i = upperBoxState.length - 1; i >= 1; i--) {
+      upperBoxState.pop();
     }
 
     this.setState({
-        boxState : upperBoxState,
-        winComplete: [false],
-        draw: [false],
-        playerA: [false],
-        playerB: [false],
-        circleOrCross: [false],
-        index: 0,
-        prevClicked: false
-
-    })
-
-  }
+      boxState: upperBoxState,
+      winComplete: [false],
+      draw: [false],
+      playerA: [false],
+      playerB: [false],
+      circleOrCross: [false],
+      index: 0,
+      prevClicked: false,
+    });
+  };
 
   handlePrev = () => {
-    let {index} = this.state; 
-    if(index > 0){
-        this.setState({
-            index: --index,
-            prevClicked: true,
-        })
+    let { index } = this.state;
+    if (index > 0) {
+      this.setState({
+        index: --index,
+        prevClicked: true,
+      });
     }
-
-  }
+  };
 
   handleNext = () => {
-    let {index, boxState} = this.state; 
-    if(index + 1 < boxState.length){
-        index += 1;
+    let { index, boxState } = this.state;
+    if (index + 1 < boxState.length) {
+      index += 1;
     }
-    this.setState({ index })
-
-  }
+    this.setState({ index });
+  };
 
   handleClick = (e) => {
-    let {index} = this.state;
+    let { index } = this.state;
     if (this.state.winComplete[index]) return;
     let attr = e.target.getAttribute("name");
     const upperBoxState = [...this.state.boxState];
     const boxState = [...upperBoxState[index]];
     const obj = { ...boxState.find((v) => v.box === attr) };
-    
+
     if (obj.circle || obj.cross) {
       return;
     } else {
@@ -149,16 +146,15 @@ export class TicTacToe extends Component {
         break;
       }
     }
-    if(upperBoxState.length - 1 < (index + 1)){
-        upperBoxState.push(boxState);
+    if (upperBoxState.length - 1 < index + 1) {
+      upperBoxState.push(boxState);
+    } else {
+      upperBoxState[index + 1] = boxState;
+      while (upperBoxState.length - 1 > index + 1) {
+        upperBoxState.pop();
+      }
     }
-    else{
-        upperBoxState[index + 1] = boxState;
-        while(upperBoxState.length - 1 > (index + 1)){
-            upperBoxState.pop();
-        }
-    } 
-       
+
     let result = ["", "", "", "", "", "", "", "", ""];
     for (let i = 0; i < boxState.length; i++) {
       if (boxState[i].circle) {
@@ -182,8 +178,6 @@ export class TicTacToe extends Component {
     ) {
       winComplete = true;
       playerA = true;
-      
-
     }
     if (
       result[3] === "cross" &&
@@ -291,21 +285,21 @@ export class TicTacToe extends Component {
       playerB = true;
     }
     if (
-        result[0] === "circle" &&
-        result[4] === "circle" &&
-        result[8] === "circle"
-      ) {
-        winComplete = true;
-        playerB = true;
-      }
-      if (
-        result[2] === "circle" &&
-        result[4] === "circle" &&
-        result[6] === "circle"
-      ) {
-        winComplete = true;
-        playerB = true;
-      }
+      result[0] === "circle" &&
+      result[4] === "circle" &&
+      result[8] === "circle"
+    ) {
+      winComplete = true;
+      playerB = true;
+    }
+    if (
+      result[2] === "circle" &&
+      result[4] === "circle" &&
+      result[6] === "circle"
+    ) {
+      winComplete = true;
+      playerB = true;
+    }
 
     if (!winComplete) {
       for (let v of result) {
@@ -319,111 +313,78 @@ export class TicTacToe extends Component {
     }
 
     let winCompleteArr = [...this.state.winComplete];
-    let drawArr = [...this.state.draw]
-    let playerAArr = [...this.state.playerA]
-    let playerBArr = [...this.state.playerB]
-    let circleOrCrossArr = [...this.state.circleOrCross]
+    let drawArr = [...this.state.draw];
+    let playerAArr = [...this.state.playerA];
+    let playerBArr = [...this.state.playerB];
+    let circleOrCrossArr = [...this.state.circleOrCross];
     index += 1;
 
-    if(winCompleteArr.length - 1 < index){
-        winCompleteArr.push(winComplete)
-    }else{
-        winCompleteArr[index] = winComplete;
-        while(winCompleteArr.length - 1 > (index)){
-            winCompleteArr.pop();
-        }
+    if (winCompleteArr.length - 1 < index) {
+      winCompleteArr.push(winComplete);
+    } else {
+      winCompleteArr[index] = winComplete;
+      while (winCompleteArr.length - 1 > index) {
+        winCompleteArr.pop();
+      }
     }
 
-    if(drawArr.length - 1 < index){
-        drawArr.push(draw)
-    }else{
-        drawArr[index] = draw;
-        while(drawArr.length - 1 > (index)){
-            drawArr.pop();
-        }
+    if (drawArr.length - 1 < index) {
+      drawArr.push(draw);
+    } else {
+      drawArr[index] = draw;
+      while (drawArr.length - 1 > index) {
+        drawArr.pop();
+      }
     }
-    
-    if(playerAArr.length - 1 < index){
-        playerAArr.push(playerA)
-    }else{
-        playerAArr[index] = playerA;
-        while(playerAArr.length - 1 > (index)){
-            playerAArr.pop();
-        }
+
+    if (playerAArr.length - 1 < index) {
+      playerAArr.push(playerA);
+    } else {
+      playerAArr[index] = playerA;
+      while (playerAArr.length - 1 > index) {
+        playerAArr.pop();
+      }
     }
-    
-    if(playerBArr.length - 1 < index){
-        playerBArr.push(playerB)
-    }else{
-        playerBArr[index] = playerB;
-        while(playerBArr.length - 1 > (index)){
-            playerBArr.pop();
-        }
+
+    if (playerBArr.length - 1 < index) {
+      playerBArr.push(playerB);
+    } else {
+      playerBArr[index] = playerB;
+      while (playerBArr.length - 1 > index) {
+        playerBArr.pop();
+      }
     }
-    
-    if(circleOrCrossArr.length - 1 > index){
-        circleOrCrossArr.push(!circleOrCross)
-    }else{
-        circleOrCrossArr[index] = !circleOrCross;
-        while(circleOrCrossArr.length - 1 < (index)){
-            circleOrCrossArr.pop();
-        }
+
+    if (circleOrCrossArr.length - 1 > index) {
+      circleOrCrossArr.push(!circleOrCross);
+    } else {
+      circleOrCrossArr[index] = !circleOrCross;
+      while (circleOrCrossArr.length - 1 < index) {
+        circleOrCrossArr.pop();
+      }
     }
 
     this.setState({
-      winComplete : winCompleteArr,
+      winComplete: winCompleteArr,
       draw: drawArr,
-      playerA : playerAArr,
+      playerA: playerAArr,
       playerB: playerBArr,
       boxState: upperBoxState,
       circleOrCross: circleOrCrossArr,
       index: index,
-      prevClicked: false
+      prevClicked: false,
     });
   };
   render() {
-    const {index} = this.state; 
-    const  {
-        draw,
-        playerA,
-        playerB,
-        circleOrCross
-    } = this.state
+
     return (
       <div className="wrapper">
-        <h1>Tic-Tac-Toe</h1>
-        <div className="players">
-          {!draw[index] ? (
-            !playerA[index] && !playerB[index] ? (
-              <>
-                <p>PlayerA(X)</p>
-                {circleOrCross[index] ? (<p>B</p>) : (<p>A</p>)}
-                <p>PlayerB(O)</p>
-              </>
-            ) : playerA[index] && !playerB[index] ? (
-              <p>PlayerA wins</p>
-            ) : (
-              <p>PlayerB wins</p>
-            )
-          ) : (
-            <p>Draw</p>
-          )}
-        </div>
-        <Utility prevClicked={this.state.prevClicked} handleReset={this.handleReset} handlePrev={this.handlePrev} handleNext={this.handleNext} />
-        <div className="tictactoe">
-          {this.state.boxState[index].map((e) => {
-            return (
-              <div
-                key={e.box}
-                name={e.box}
-                onClick={this.handleClick.bind(this)}
-                className={`box ${e.box}`}
-              >
-                {e.innerText}
-              </div>
-            );
-          })}
-        </div>
+        <TicTacToeMain {...this.state}
+          handleReset={this.handleReset} 
+          handlePrev={this.handlePrev} 
+          handleNext={this.handleNext} 
+          handleClick={this.handleClick} 
+        />
       </div>
     );
   }

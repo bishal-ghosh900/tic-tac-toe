@@ -1,13 +1,18 @@
-import React, { Component } from 'react'
-import { Fragment } from 'react'
-import TicTacToe from './TicTacToe'
+import React, { Component } from 'react';
+import { Routes, Route } from 'react-router';
+import NotFound from './NotFound';
+import TicTacToe from './TicTacToe';
+import TicTacToeStart from './TicTacToeStart';
+
 
 export class WrapperTicTacToe extends Component {
     render() {
         return (
-            <Fragment>
-               <TicTacToe /> 
-            </Fragment>
+            <Routes>
+               <Route exact path="/tic-tac-toe-started" element={<TicTacToe />} /> 
+               <Route exact path="/" element={<TicTacToeStart />} /> 
+               <Route path="*" element={<NotFound />} /> 
+            </Routes>
         )
     }
 }
