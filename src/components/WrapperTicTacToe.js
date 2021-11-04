@@ -11,7 +11,7 @@ export class WrapperTicTacToe extends Component {
             <Routes>
                <Route exact path="/tic-tac-toe-started" element={<TicTacToe />} /> 
                <Route exact path="/" element={<TicTacToeStart />} /> 
-               <Route path="*" element={<NotFound />} /> 
+               <Route status={404} element={<NotFound />} /> 
             </Routes>
         )
     }
